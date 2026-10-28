@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../assets/img/wahr.png">
+  <title>贡献与索引维护 · WebAIHarnessRoom</title>
+  <meta name="description" content="如何向 WebAIHarnessRoom 提交新的 Harness 并维护索引。">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <img src="../assets/img/wahr.png" alt="" class="brand-icon" width="26" height="26">
+        <span>WebAIHarnessRoom</span>
+      </a>
+      <nav class="site-nav">
+        <a href="../index.html">门厅</a>
+        <a href="../index/index.html">索引</a>
+        <a href="../about/index.html">理念</a>
+        <a href="index.html" aria-current="page">贡献</a>
+        <a href="https://github.com/WebAIHarnessRoom" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container prose-page">
+    <h1>贡献与索引维护</h1>
+
+    <section>
+      <h2>提交新的 Harness</h2>
+      <ol>
+        <li>确保 Harness 已以独立仓库的形式存在于 <a href="https://github.com/WebAIHarnessRoom" target="_blank" rel="noopener">WebAIHarnessRoom 组织</a>下。</li>
+        <li>向 <a href="https://github.com/WebAIHarnessRoom/room-index" target="_blank" rel="noopener">room-index</a> 提交 PR，更新索引数据文件。</li>
+        <li>在门户的 <code>assets/data.js</code> 中追加条目，并在 <code>harness/&lt;id&gt;/index.html</code> 下创建对应详情页。</li>
+      </ol>
+    </section>
+
+    <section id="status">
+      <h2>状态语义</h2>
+      <p>状态不是质量评级，而是验证状态。门户不暗示“已验证 = 推荐”。</p>
+      <dl class="status-definitions">
+        <dt><span class="badge badge-verified">已验证</span></dt>
+        <dd>在声明的目标 Web AI 上完成过实际验证，且最后验证日期在 90 天内。</dd>
+        <dt><span class="badge badge-pending">待验证</span></dt>
+        <dd>存在于索引中，但尚未完成近期验证，或最后验证日期超过 90 天。</dd>
+        <dt><span class="badge badge-experimental">实验中</span></dt>
+        <dd>Harness 自身在活跃开发中，接口或行为可能变化，验证状态暂不适用。</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2>索引字段说明</h2>
+      <table class="field-table">
+        <thead><tr><th>字段</th><th>说明</th><th>维护者</th></tr></thead>
+        <tbody>
+          <tr><td><code>id</code></td><td>稳定 slug，用于详情页目录名</td><td>索引 PR</td></tr>
+          <tr><td><code>name</code></td><td>与仓库 README 一致的显示名称</td><td>索引 PR</td></tr>
+          <tr><td><code>tagline</code></td><td>一句话说明，索引页与详情页共用</td><td>索引 PR</td></tr>
+          <tr><td><code>target_web_ai</code></td><td>目标 Web AI</td><td>索引 PR</td></tr>
+          <tr><td><code>status</code></td><td>verified / pending / experimental</td><td>索引 PR</td></tr>
+          <tr><td><code>last_verified</code></td><td>最后一次实际验证的日期（YYYY-MM-DD）</td><td>索引 PR</td></tr>
+          <tr><td><code>language</code> / <code>license</code> / <code>version</code></td><td>仓库元数据</td><td>索引 PR</td></tr>
+          <tr><td><code>getting_started</code></td><td>最小可用的安装/使用命令</td><td>索引 PR</td></tr>
+          <tr><td><code>boundary_note</code></td><td>该 Harness 特有的边界说明（可选）</td><td>Harness 作者</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Room 不做什么</h2>
+      <p>Room 不定义 Harness 的准入门槛，不认证 Harness 的质量，不把 Harness 收编为子模块。Room 只归集与呈现。详见 <a href="../about/index.html">理念与边界</a>。</p>
+    </section>
+
+    <p><a href="https://github.com/WebAIHarnessRoom/room-index/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">阅读 room-index 的 CONTRIBUTING.md →</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>WebAIHarnessRoom · Harness 自治，Room 归集</p></div>
+  </footer>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../assets/img/wahr.png">
+  <title>Harness 索引 · WebAIHarnessRoom</title>
+  <meta name="description" content="WebAIHarnessRoom 的 Harness 索引目录。">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <img src="../assets/img/wahr.png" alt="" class="brand-icon" width="26" height="26">
+        <span>WebAIHarnessRoom</span>
+      </a>
+      <nav class="site-nav">
+        <a href="../index.html">门厅</a>
+        <a href="index.html" aria-current="page">索引</a>
+        <a href="../about/index.html">理念</a>
+        <a href="../contributing/index.html">贡献</a>
+        <a href="https://github.com/WebAIHarnessRoom" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-head">
+      <h1>Harness 索引</h1>
+      <p class="status-legend">
+        <span class="badge badge-verified">已验证</span>
+        <span class="badge badge-pending">待验证</span>
+        <span class="badge badge-experimental">实验中</span>
+        <span class="legend-note">状态说明见 <a href="../contributing/index.html#status">贡献页</a></span>
+      </p>
+    </section>
+
+    <section class="filters">
+      <input type="search" id="search" placeholder="搜索名称或说明…" aria-label="搜索 Harness">
+      <select id="filter-target" aria-label="按目标 Web AI 筛选">
+        <option value="">全部目标 Web AI</option>
+      </select>
+      <select id="filter-status" aria-label="按状态筛选">
+        <option value="">全部状态</option>
+        <option value="verified">已验证</option>
+        <option value="pending">待验证</option>
+        <option value="experimental">实验中</option>
+      </select>
+    </section>
+
+    <section id="index-view-table" class="index-view"></section>
+    <section id="index-view-cards" class="index-view" hidden></section>
+
+    <div class="view-toggle">
+      <button id="toggle-table" class="toggle-btn active" data-view="table">表格视图</button>
+      <button id="toggle-cards" class="toggle-btn" data-view="cards">卡片视图</button>
+    </div>
+
+    <p class="empty-state" id="empty-state" hidden>没有匹配的 Harness。</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>WebAIHarnessRoom · Harness 自治，Room 归集</p></div>
+  </footer>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

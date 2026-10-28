@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../../assets/img/gpc.png">
+  <title>GenerateProjectContext · WebAIHarnessRoom</title>
+  <meta name="description" content="把任意代码项目整理成一份 Markdown 上下文文档。提供 Windows 独立版（免 Python，双击即用），也支持 CLI 和 Python API。">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="brand">
+        <img src="../../assets/img/wahr.png" alt="" class="brand-icon" width="26" height="26">
+        <span>WebAIHarnessRoom</span>
+      </a>
+      <nav class="site-nav">
+        <a href="../../index.html">门厅</a>
+        <a href="../../index/index.html">索引</a>
+        <a href="../../about/index.html">理念</a>
+        <a href="../../contributing/index.html">贡献</a>
+        <a href="https://github.com/WebAIHarnessRoom" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container detail-page" data-harness-id="generate-project-context">
+    <header class="detail-head">
+      <div class="detail-title-row">
+        <img src="../../assets/img/gpc.png" alt="" class="detail-icon" width="40" height="40">
+        <h1>GenerateProjectContext</h1>
+        <span class="badge" data-field="status"></span>
+        <span class="badge badge-platform">Windows 独立版</span>
+      </div>
+      <p class="detail-meta">
+        <span data-field="target_web_ai">通用</span>
+        <span class="sep">·</span>
+        <span data-field="language">Python</span>
+        <span class="sep">·</span>
+        <span data-field="license">MIT</span>
+        <span class="sep">·</span>
+        <span data-field="version">v0.1.0</span>
+        <span class="sep">·</span>
+        最后验证 <span data-field="last_verified">2026-10-28</span>
+      </p>
+      <p class="detail-tagline">把任意代码项目整理成一份 Markdown 上下文文档<br>——用于人工快速理解项目，也用于给 AI 提供完整工程上下文。</p>
+      <div class="detail-actions">
+        <a href="https://github.com/WebAIHarnessRoom/GenerateProjectContext/releases/latest" target="_blank" rel="noopener" class="btn-primary">下载 Windows 独立版</a>
+        <a href="#quickstart" class="btn-secondary">其他使用方式</a>
+      </div>
+    </header>
+
+    <section class="prose-section">
+      <h2>它做什么</h2>
+      <p>GenerateProjectContext 扫描一个代码项目，把目录结构、代码签名、源码、配置和 Git 历史整理成一份结构化的 <code>PROJECT_CONTEXT.md</code>。这份文档既方便人快速浏览项目全貌，也可以直接喂给 AI，省去反复解释工程背景的成本。</p>
+      <p>它不做代码生成，不做静态分析报告，也不替代 IDE。它只做一件事：把项目的“上下文”提取出来，变成一份可读、可携带、可投喂的 Markdown 文档。</p>
+    </section>
+
+    <section class="prose-section">
+      <h2>特性</h2>
+      <ul class="feature-grid">
+        <li>
+          <strong>Windows 零依赖独立版</strong>
+          <span>最新发布版提供免安装 Python 的 Windows 可执行文件，双击即可运行，不需要配置任何开发环境。</span>
+        </li>
+        <li>
+          <strong>语言感知降噪</strong>
+          <span>自动识别项目语言，只应用相关语言的忽略规则，不把 <code>node_modules</code> 和 <code>__pycache__</code> 混在一起处理。</span>
+        </li>
+        <li>
+          <strong>双执行模式</strong>
+          <span>图形界面与 CLI 行为一致，不碰终端的人用桌面应用，脚本化场景用命令行，输出结果相同。</span>
+        </li>
+        <li>
+          <strong>AST 代码结构摘要</strong>
+          <span>从 Python 源码提取类与函数签名，生成结构总览，不必在源码里逐文件翻找。</span>
+        </li>
+        <li>
+          <strong>Git 历史汇总</strong>
+          <span>输出当前分支、最新提交、提交概览和变更文件清单，让上下文带上时间维度。</span>
+        </li>
+        <li>
+          <strong>高度可配置</strong>
+          <span>通用配置与语言级配置分层合并，<code>--dump-config</code> 可打印最终生效配置及其来源。</span>
+        </li>
+        <li>
+          <strong>零强制依赖（pip 版）</strong>
+          <span>核心 CLI 只用标准库（Python 3.9/3.10 需 <code>tomli</code>），不引入第三方包。</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="prose-section">
+      <h2>安装</h2>
+
+      <h3>Windows 独立版（推荐）</h3>
+      <p>从 GitHub Releases 下载最新的 Windows 可执行文件，双击运行，无需安装 Python、无需管理员权限。</p>
+      <div class="download-block">
+        <a href="https://github.com/WebAIHarnessRoom/GenerateProjectContext/releases/latest" target="_blank" rel="noopener" class="btn-primary">前往 Releases 下载 →</a>
+        <p class="install-note">下载后建议核对 Release 页面提供的 SHA-256 校验值。首次运行可能触发 Windows SmartScreen 提示，这是因为可执行文件尚未使用商业代码签名，属于正常现象。</p>
+      </div>
+
+      <h3>pip 安装（开发者 / 脚本集成）</h3>
+      <p>需要 <strong>Python 3.9+</strong>。适合需要把 GenerateProjectContext 嵌入 Python 脚本、CI 流水线或非 Windows 环境的场景。</p>
+      <div class="install-options">
+        <div class="install-option">
+          <h3>核心 CLI</h3>
+          <pre class="code-block"><code>pip install project-context</code></pre>
+          <p class="install-note">安装后获得 <code>project-context</code> 命令。</p>
+        </div>
+        <div class="install-option">
+          <h3>含图形界面（非 Windows 独立版时）</h3>
+          <pre class="code-block"><code>pip install "project-context[gui]"</code></pre>
+          <p class="install-note">额外安装 PySide6，提供 <code>project-context-gui</code> 命令。</p>
+        </div>
+        <div class="install-option">
+          <h3>从源码安装（开发）</h3>
+          <pre class="code-block"><code>git clone https://github.com/WebAIHarnessRoom/GenerateProjectContext.git
+cd GenerateProjectContext
+pip install -e ".[dev,gui]"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="prose-section compare-section">
+      <h2>独立版 vs pip 版</h2>
+      <table class="compare-table">
+        <thead>
+          <tr><th></th><th>Windows 独立版</th><th>pip 版</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>前置条件</td><td>无，双击即用</td><td>需要 Python 3.9+</td></tr>
+          <tr><td>主要使用方式</td><td>图形界面</td><td>CLI / Python API</td></tr>
+          <tr><td>适合场景</td><td>直接使用、不碰终端</td><td>脚本集成、CI、跨平台</td></tr>
+          <tr><td>更新方式</td><td>重新下载 Release</td><td><code>pip install -U</code></td></tr>
+          <tr><td>体积</td><td>较大（打包运行时）</td><td>较小（依赖系统 Python）</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="prose-section" id="quickstart">
+      <h2>快速开始</h2>
+
+      <h3>Windows 独立版：桌面应用</h3>
+      <p>打开下载的可执行文件 → 选择项目文件夹 → 点击“开始生成” → 生成的 <code>PROJECT_CONTEXT.md</code> 默认落在项目目录下。整个过程不需要输入任何命令。</p>
+
+      <h3>pip 版：命令行</h3>
+      <p>最常用的脚本化方式：进入项目目录，跑一条命令。</p>
+      <pre class="code-block"><code># 分析当前目录，输出到 ./PROJECT_CONTEXT.md
+project-context .
+
+# 指定输出路径
+project-context /path/to/project -o context.md
+
+# 只出结构，不输出源码内容（适合超大项目喂给 AI）
+project-context . --no-content</code></pre>
+
+      <h3>pip 版：Python API</h3>
+      <p>需要把上下文生成嵌进脚本或工具链时使用。</p>
+      <pre class="code-block"><code>from project_context import generate_context
+
+# 输出到 ./PROJECT_CONTEXT.md
+generate_context(root=".")
+
+# 只要 Markdown 字符串，不落盘
+md = generate_context(root=".", output=None)</code></pre>
+    </section>
+
+    <section class="prose-section">
+      <h2>生成的文档长什么样</h2>
+      <p>输出是一份结构固定的 Markdown，依次包含：</p>
+      <ol class="output-structure">
+        <li><strong>项目概览</strong> — 文件数、行数、激活语言、Git 分支、配置来源</li>
+        <li><strong>目录结构</strong> — tree 风格，已按语言规则过滤噪音</li>
+        <li><strong>代码结构总览</strong> — Python 类与函数签名（AST 摘要）</li>
+        <li><strong>源码与配置文件内容</strong> — 每个文件的完整内容，带代码块语言标签</li>
+        <li><strong>Git 提交历史</strong> — 分支、提交概览表、提交详情</li>
+      </ol>
+    </section>
+
+    <section class="prose-section">
+      <h2>设计边界</h2>
+      <p>参见 <a href="../../about/index.html#boundary">组织级边界原则</a>。GenerateProjectContext 在本机读取项目文件，不向任何外部服务发送代码内容；Windows 独立版不联网、不收集使用数据。生成的上下文文档由使用者自行决定用途。它不做代码执行、不做依赖解析、不尝试理解运行时行为，只做静态文件的汇总与结构化。</p>
+    </section>
+
+    <footer class="detail-footer">
+      <a href="https://github.com/WebAIHarnessRoom/GenerateProjectContext" target="_blank" rel="noopener">GitHub 仓库 ↗</a>
+      <a href="https://github.com/WebAIHarnessRoom/GenerateProjectContext/releases/latest" target="_blank" rel="noopener">Releases ↗</a>
+      <a href="https://pypi.org/project/project-context/" target="_blank" rel="noopener">PyPI ↗</a>
+      <a href="https://github.com/WebAIHarnessRoom/room-index" target="_blank" rel="noopener">room-index 条目 ↗</a>
+    </footer>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>WebAIHarnessRoom · Harness 自治，Room 归集</p></div>
+  </footer>
+
+  <script src="../../assets/data.js"></script>
+  <script src="../../assets/app.js"></script>
+</body>
+</html>
