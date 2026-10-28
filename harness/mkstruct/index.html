@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../../assets/img/mkstruct.png">
+  <title>mkstruct · WebAIHarnessRoom</title>
+  <meta name="description" content="根据树形结构文本，一键创建目录与空文件的项目骨架生成器。提供 CLI 与 GUI 两种形态。">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="brand">
+        <img src="../../assets/img/wahr.png" alt="" class="brand-icon" width="26" height="26">
+        <span>WebAIHarnessRoom</span>
+      </a>
+      <nav class="site-nav">
+        <a href="../../index.html">门厅</a>
+        <a href="../../index/index.html">索引</a>
+        <a href="../../about/index.html">理念</a>
+        <a href="../../contributing/index.html">贡献</a>
+        <a href="https://github.com/WebAIHarnessRoom" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container detail-page" data-harness-id="mkstruct">
+    <header class="detail-head">
+      <div class="detail-title-row">
+        <img src="../../assets/img/mkstruct.png" alt="" class="detail-icon" width="40" height="40"
+             onerror="this.onerror=null;this.src='../../assets/img/wahr.png';">
+        <h1>mkstruct</h1>
+        <span class="badge" data-field="status"></span>
+        <span class="badge badge-platform">Windows 独立版</span>
+      </div>
+      <p class="detail-meta">
+        <span data-field="target_web_ai">通用</span>
+        <span class="sep">·</span>
+        <span data-field="language">Python</span>
+        <span class="sep">·</span>
+        <span data-field="license">MIT</span>
+        <span class="sep">·</span>
+        <span data-field="version">v0.1.0</span>
+        <span class="sep">·</span>
+        最后验证 <span data-field="last_verified">2026-10-28</span>
+      </p>
+      <p class="detail-tagline">根据树形结构文本，一键创建目录与空文件的项目骨架生成器</p>
+      <div class="detail-actions">
+        <a href="https://github.com/WebAIHarnessRoom/mkstruct/releases" target="_blank" rel="noopener" class="btn-primary">下载 Windows 独立版</a>
+        <a href="https://github.com/WebAIHarnessRoom/mkstruct" target="_blank" rel="noopener" class="btn-secondary">查看仓库</a>
+      </div>
+    </header>
+
+    <section class="prose-section">
+      <h2>它做什么</h2>
+      <p><code>mkstruct</code> 接收 <code>tree</code> 命令风格的目录树，或设计文档里常见的树形结构文本，在指定位置批量创建出完整的目录和文件骨架。它省去手工 <code>mkdir</code> / <code>touch</code> 的重复劳动，适合在写代码之前先搭出项目结构。</p>
+      <p>它提供 <strong>CLI</strong> 与 <strong>GUI</strong> 两种形态，共享同一套解析与创建逻辑，行为完全一致。它不生成文件内容，不替代脚手架工具，也不执行任何代码；只负责从结构文本到磁盘骨架这一步。</p>
+    </section>
+
+    <section class="prose-section">
+      <h2>特性</h2>
+      <ul class="feature-grid">
+        <li>
+          <strong>三种输入方式</strong>
+          <span>结构文本文件、命令行字符串、标准输入 / 管道 / 剪贴板。</span>
+        </li>
+        <li>
+          <strong>自动识别层级</strong>
+          <span>支持 <code>├──</code>、<code>└──</code>、<code>│</code>、<code>--</code>、空格缩进等多种树形画法，缩进宽度自动推断。</span>
+        </li>
+        <li>
+          <strong>目录以 / 结尾</strong>
+          <span>带 <code>/</code> 结尾或有子节点的节点视为目录，其余视为文件，<code>Makefile</code>、<code>LICENSE</code> 这类无扩展名文件也能被正确识别。</span>
+        </li>
+        <li>
+          <strong>忽略行内注释</strong>
+          <span>空格 + <code>#</code> 之后的内容会被剥离，方便直接复用带说明文字的结构文本。</span>
+        </li>
+        <li>
+          <strong>简写自动展开</strong>
+          <span><code>RtmpDataSource.h/.cpp</code> 会自动创建 <code>RtmpDataSource.h</code> 和 <code>RtmpDataSource.cpp</code> 两个文件。</span>
+        </li>
+        <li>
+          <strong>预览与写入分离</strong>
+          <span><code>--dry-run</code> / GUI「预览」不写磁盘；正式写入前必须确认。</span>
+        </li>
+        <li>
+          <strong>幂等安全</strong>
+          <span>已存在的文件不会被覆盖，只会标记为 <code>skip</code>。</span>
+        </li>
+        <li>
+          <strong>零第三方依赖</strong>
+          <span>仅使用 Python 标准库。</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="prose-section">
+      <h2>安装</h2>
+      <ul class="output-structure">
+        <li><strong>Windows 独立版（推荐）</strong>：从 <a href="https://github.com/WebAIHarnessRoom/mkstruct/releases" target="_blank" rel="noopener">Releases</a> 下载 <code>mkstruct.exe</code>（CLI）或 <code>mkstruct-gui.exe</code>（GUI），免安装 Python，双击即用。</li>
+        <li><strong>从源码运行</strong>：需要 Python 3.8+，<code>git clone</code> 后 <code>python mkstruct.py --help</code>（CLI）或 <code>python gui.py</code>（GUI）。<code>mkstruct.py</code> 依赖同目录的 <code>core.py</code>，不能单独拷走单个文件。</li>
+        <li><strong>自行打包 exe</strong>：参见仓库 <a href="https://github.com/WebAIHarnessRoom/mkstruct/blob/master/DEVELOPMENT.md" target="_blank" rel="noopener">DEVELOPMENT.md</a> 的「打包」一节。</li>
+      </ul>
+    </section>
+
+    <section class="prose-section" id="cli">
+      <h2>命令行（CLI）使用</h2>
+      <p>CLI 适合脚本化、批量、可重复的场景：结构文本存在文件里，一条命令生成骨架，结果可以纳入版本控制或 CI。</p>
+
+      <h3>基本语法</h3>
+      <pre class="code-block"><code>mkstruct &lt;输入&gt; -d &lt;目标目录&gt; [--dry-run]</code></pre>
+      <p><code>&lt;输入&gt;</code> 可以是结构文本文件路径、直接写在命令行上的结构字符串，或从标准输入传入（<code>-</code> 或管道）。<code>-d</code> 指定骨架创建到哪个目录，目录不存在时会自动创建。<code>--dry-run</code> 只解析并打印将要创建的内容，不写磁盘。</p>
+
+      <h3>从文件输入</h3>
+      <p>准备一个 <code>tree.txt</code>：</p>
+      <pre class="code-block"><code>myapp/
+├── src/
+│   ├── main.py
+│   └── utils/
+│       └── RtmpDataSource.h/.cpp
+├── tests/
+│   └── test_main.py
+├── Makefile
+└── LICENSE  # 行内注释会被忽略</code></pre>
+      <p>先预览，确认无误再写入：</p>
+      <pre class="code-block"><code># 预览：不写磁盘，只打印解析结果
+mkstruct tree.txt -d .\out --dry-run
+
+# 正式写入
+mkstruct tree.txt -d .\out</code></pre>
+      <p>执行后 <code>.\out\myapp\</code> 下会得到完整的目录树与空文件，<code>RtmpDataSource.h</code> 与 <code>RtmpDataSource.cpp</code> 由简写自动展开。</p>
+
+      <h3>从命令行字符串输入</h3>
+      <p>临时搭一个小骨架时，不必先建文件：</p>
+      <pre class="code-block"><code>mkstruct "src/ ├── index.js └── app.js" -d .\demo --dry-run</code></pre>
+
+      <h3>从标准输入 / 管道输入</h3>
+      <p>适合把其他工具的树形输出直接接进来：</p>
+      <pre class="code-block"><code># 管道
+type design.txt | mkstruct - -d .\out
+
+# 或从剪贴板（Windows PowerShell）
+Get-Clipboard | mkstruct - -d .\out</code></pre>
+
+      <h3>输出含义</h3>
+      <ul class="output-structure">
+        <li><strong>created</strong>：本次新建的目录或文件。</li>
+        <li><strong>skip</strong>：目标已存在，跳过，不覆盖。</li>
+        <li><strong>dry-run</strong>：仅预览，所有条目都不会落盘。</li>
+      </ul>
+      <p>各参数的完整说明以 <code>mkstruct --help</code> 为准。</p>
+    </section>
+
+    <section class="prose-section" id="gui">
+      <h2>图形界面（GUI）使用</h2>
+      <p>GUI 适合不想碰终端、或需要边看结构边调整的场景。它与 CLI 共用同一套解析与创建逻辑，输出结果一致。</p>
+
+      <h3>启动</h3>
+      <p>下载 <code>mkstruct-gui.exe</code> 后双击即可运行，无需安装 Python。从源码运行时执行 <code>python gui.py</code>。</p>
+
+      <h3>使用流程</h3>
+      <ol class="output-structure">
+        <li><strong>粘贴结构文本</strong>：把 <code>tree</code> 输出或设计文档里的树形结构粘贴到左侧输入框，也可以直接打开文本文件。</li>
+        <li><strong>实时预览解析</strong>：右侧会实时显示解析出的目录 / 文件列表。目录以 <code>/</code> 结尾或有子节点识别，其余识别为文件。</li>
+        <li><strong>指定目标目录</strong>：选择骨架要创建到哪个位置。</li>
+        <li><strong>点击「预览」</strong>：只展示将要创建的内容，不写磁盘。</li>
+        <li><strong>点击「写入」</strong>：确认无误后正式创建。已存在的文件会被标记为 <code>skip</code>，不会被覆盖。</li>
+      </ol>
+
+      <h3>注意事项</h3>
+      <ul class="output-structure">
+        <li><strong>「预览」与「写入」是两步</strong>：预览不做任何磁盘操作，写入前务必先预览。</li>
+        <li><strong>不会覆盖已有文件</strong>：目标已存在同名文件时直接跳过，不会询问、也不会改动其内容。</li>
+        <li><strong>行内注释会被忽略</strong>：粘贴带 <code># 说明</code> 的结构文本可以直接使用，不需要手工清理。</li>
+        <li><strong>简写自动展开</strong>：<code>a.h/.cpp</code> 这类写法会在预览里显示为两个独立文件。</li>
+      </ul>
+    </section>
+
+    <section class="prose-section">
+      <h2>设计边界</h2>
+      <p><code>mkstruct</code> 只创建目录和空文件，不写入文件内容，不生成模板代码，不处理文件权限或符号链接。如果目标路径已存在文件，它会跳过而不是覆盖；如果目标目录不存在，它会按结构创建父目录。需要“文件内容初始化”时，应在骨架创建后由脚手架或模板工具接手。</p>
+    </section>
+
+    <footer class="detail-footer">
+      <a href="https://github.com/WebAIHarnessRoom/mkstruct" target="_blank" rel="noopener">GitHub 仓库 ↗</a>
+      <a href="https://github.com/WebAIHarnessRoom/mkstruct/releases" target="_blank" rel="noopener">Releases ↗</a>
+      <a href="https://github.com/WebAIHarnessRoom/room-index" target="_blank" rel="noopener">room-index 条目 ↗</a>
+    </footer>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>WebAIHarnessRoom · Harness 自治，Room 归集</p></div>
+  </footer>
+
+  <script src="../../assets/data.js"></script>
+  <script src="../../assets/app.js"></script>
+</body>
+</html>
