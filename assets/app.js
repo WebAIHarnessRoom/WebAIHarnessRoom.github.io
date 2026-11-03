@@ -187,6 +187,7 @@
     if (h.getting_started) setText('getting_started', h.getting_started);
   }
 
+  /* ===== Video embed: 显式 https、去掉 autoplay、poster 显示封面 ===== */
   function initVideoEmbeds() {
     var embeds = document.querySelectorAll('.video-embed[data-bvid]');
     if (!embeds.length) return;
@@ -201,13 +202,19 @@
 
         var iframe = document.createElement('iframe');
         iframe.className = 'video-iframe';
+
+        /* 关键修复 1：显式 https://，不用 // */
+        /* 关键修复 2：autoplay=0，交给 B 站播放器内的播放键 */
+        /* 关键修复 3：poster=1，加载后显示封面而非黑屏 */
         iframe.src = 'https://player.bilibili.com/player.html' +
           '?bvid=' + encodeURIComponent(bvid) +
-          '&page=1&high_quality=1&danmaku=0&autoplay=1&as_wide=1';
+          '&page=1&high_quality=1&danmaku=0&autoplay=0&as_wide=1&poster=1';
+
         iframe.title = '演示视频';
         iframe.setAttribute('frameborder', '0');
         iframe.setAttribute('scrolling', 'no');
         iframe.setAttribute('allowfullscreen', 'true');
+        iframe.setAttribute('allow', 'fullscreen; picture-in-picture');
         iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
 
         el.innerHTML = '';
