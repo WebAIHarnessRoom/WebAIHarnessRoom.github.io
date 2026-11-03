@@ -187,10 +187,40 @@
     if (h.getting_started) setText('getting_started', h.getting_started);
   }
 
+  function initVideoEmbeds() {
+    var embeds = document.querySelectorAll('.video-embed[data-bvid]');
+    if (!embeds.length) return;
+
+    Array.prototype.forEach.call(embeds, function (el) {
+      var poster = el.querySelector('.video-poster');
+      if (!poster) return;
+
+      poster.addEventListener('click', function () {
+        var bvid = el.getAttribute('data-bvid');
+        if (!bvid) return;
+
+        var iframe = document.createElement('iframe');
+        iframe.className = 'video-iframe';
+        iframe.src = 'https://player.bilibili.com/player.html' +
+          '?bvid=' + encodeURIComponent(bvid) +
+          '&page=1&high_quality=1&danmaku=0&autoplay=1&as_wide=1';
+        iframe.title = '演示视频';
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('scrolling', 'no');
+        iframe.setAttribute('allowfullscreen', 'true');
+        iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+
+        el.innerHTML = '';
+        el.appendChild(iframe);
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     renderStatusBar();
     renderHomeCards();
     initIndex();
     renderDetail();
+    initVideoEmbeds();
   });
 })();
