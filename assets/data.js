@@ -35,5 +35,22 @@ window.HARNESS_DATA = [
     getting_started: 'mkstruct tree.txt -d .\\out',
     docs_url: 'https://github.com/WebAIHarnessRoom/mkstruct',
     boundary_note: '预览与写入分离，已存在文件不会被覆盖；目录以 / 结尾或有子节点识别，文件以其余节点识别。'
+  },
+  {
+    id: 'deepseek-code-nav',
+    name: 'DeepSeek 代码块导航',
+    repo: 'WebAIHarnessRoom/deepseek-code-nav',
+    icon: 'assets/img/deepseek-code-nav.png',
+    tagline: '在 DeepSeek 网页对话中一键跳转上一段 / 下一段代码块，免去反复滚动鼠标滚轮',
+    description: '浏览器扩展（Manifest V3），在 chat.deepseek.com 页面注入可拖拽浮动导航条。以代码块右上角「复制」按钮为锚点识别并排序代码块，支持上一段/下一段跳转、边界置灰、位置指示、平滑滚动与 1.5 秒高亮。零数据收集，仅声明 content script 匹配 https://chat.deepseek.com/*。',
+    target_web_ai: 'DeepSeek',
+    status: 'verified',
+    last_verified: '2026-11-09',
+    language: 'JavaScript',
+    license: 'MIT',
+    version: '1.0.0',
+    getting_started: '打开 chrome://extensions/ → 开启开发者模式 → 加载已解压的扩展程序 → 选择 src/ 目录',
+    docs_url: 'https://github.com/WebAIHarnessRoom/deepseek-code-nav#readme',
+    boundary_note: '非官方扩展，与 DeepSeek 官方无关；仅匹配 chat.deepseek.com；依赖页面结构，改版时可能退化为 pre 兜底；流式生成期间跳转可能有一次视觉回弹；不收集、不存储、不传输任何用户数据。'
   }
 ];

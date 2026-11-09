@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../../assets/img/deepseek-code-nav.png">
+  <title>DeepSeek 代码块导航 · WebAIHarnessRoom</title>
+  <meta name="description" content="在 DeepSeek 网页对话中一键跳转上一段 / 下一段代码块，免去反复滚动鼠标滚轮。零数据收集的浏览器扩展。">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="brand">
+        <img src="../../assets/img/wahr.png" alt="" class="brand-icon" width="26" height="26">
+        <span>WebAIHarnessRoom</span>
+      </a>
+      <nav class="site-nav">
+        <a href="../../index.html">门厅</a>
+        <a href="../../index/index.html">索引</a>
+        <a href="../../about/index.html">理念</a>
+        <a href="../../contributing/index.html">贡献</a>
+        <a href="https://github.com/WebAIHarnessRoom" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container detail-page" data-harness-id="deepseek-code-nav">
+    <header class="detail-head">
+      <div class="detail-title-row">
+        <img src="../../assets/img/deepseek-code-nav.png" alt="" class="detail-icon" width="40" height="40"
+             onerror="this.onerror=null;this.src='../../assets/img/wahr.png';">
+        <h1>DeepSeek 代码块导航</h1>
+        <span class="badge" data-field="status"></span>
+        <span class="badge badge-platform">Chrome / Edge 扩展</span>
+      </div>
+      <p class="detail-meta">
+        <span data-field="target_web_ai">DeepSeek</span>
+        <span class="sep">·</span>
+        <span data-field="language">JavaScript</span>
+        <span class="sep">·</span>
+        <span data-field="license">MIT</span>
+        <span class="sep">·</span>
+        <span data-field="version">v1.0.0</span>
+        <span class="sep">·</span>
+        最后验证 <span data-field="last_verified">2026-11-09</span>
+      </p>
+      <p class="detail-tagline">在 DeepSeek 网页对话中一键跳转上一段 / 下一段代码块，免去反复滚动鼠标滚轮。</p>
+      <div class="detail-actions">
+        <a href="https://github.com/WebAIHarnessRoom/deepseek-code-nav" target="_blank" rel="noopener" class="btn-primary">查看仓库</a>
+        <a href="https://github.com/WebAIHarnessRoom/deepseek-code-nav/blob/main/PRIVACY.md" target="_blank" rel="noopener" class="btn-secondary">隐私政策</a>
+      </div>
+    </header>
+
+    <section class="prose-section">
+      <h2>它做什么</h2>
+      <p>DeepSeek 代码块导航是一个浏览器扩展，在 <code>chat.deepseek.com</code> 的对话页面右下角注入一个可拖拽的浮动导航条。它以代码块右上角的「复制」按钮作为锚点来识别和排序代码块，因此天然排除了用户输入、思考区等非代码内容。点击 ↑ / ↓ 即可在上一段和下一段代码块之间跳转，目标块会滚动到视口上方 25% 处，并做 1.5 秒蓝色高亮。</p>
+      <p>它是非官方扩展，与 DeepSeek 官方无关；不请求任何网络权限，不读取、不上传对话或代码内容，所有逻辑都在浏览器本地执行。</p>
+    </section>
+
+    <section class="prose-section">
+      <h2>界面截图</h2>
+      <p><img src="../../assets/img/deepseek-code-nav-screenshot.png" alt="DeepSeek 代码块导航界面截图"
+              style="max-width:100%;border:1px solid var(--border);border-radius:var(--radius);display:block;"></p>
+      <p class="install-note">截图来自仓库 <code>assets/screenshot-1.png</code>。</p>
+    </section>
+
+    <section class="prose-section">
+      <h2>特性</h2>
+      <ul class="feature-grid">
+        <li>
+          <strong>复制按钮作为锚点</strong>
+          <span>以代码块右上角的「复制」按钮识别和排序代码块，天然排除用户输入、思考区等噪声。</span>
+        </li>
+        <li>
+          <strong>边界自动置灰</strong>
+          <span>处于第一个代码块时「上一段」不可点，处于最后一个代码块时「下一段」不可点。</span>
+        </li>
+        <li>
+          <strong>位置指示</strong>
+          <span>显示当前处于第几个代码块，例如 <code>3 / 12</code>。</span>
+        </li>
+        <li>
+          <strong>平滑滚动 + 高亮</strong>
+          <span>目标代码块滚动到视口上方 25% 处，并做 1.5 秒蓝色高亮。</span>
+        </li>
+        <li>
+          <strong>可拖拽浮动条</strong>
+          <span>位置自由调整，不遮挡正文；按钮和拖拽区域分离，误触概率低。</span>
+        </li>
+        <li>
+          <strong>零数据收集</strong>
+          <span>不收集、不存储、不传输任何用户数据；不声明 <code>storage</code>、<code>tabs</code>、<code>cookies</code> 等敏感权限。</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="prose-section">
+      <h2>安装（开发者模式）</h2>
+      <ol class="output-structure">
+        <li>下载或克隆仓库源码。</li>
+        <li>打开 <code>chrome://extensions/</code>（Edge 为 <code>edge://extensions/</code>），开启「开发者模式」。</li>
+        <li>点击「加载已解压的扩展程序」，选择仓库的 <code>src/</code> 目录。</li>
+        <li>打开 <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">chat.deepseek.com</a> 并进入含代码块的对话。</li>
+      </ol>
+      <p class="install-note">扩展只匹配 <code>https://chat.deepseek.com/*</code>，不会在其他页面运行。改动 <code>src/content.js</code> 后，在扩展管理页点击「重新加载」，刷新对话页面即可生效。</p>
+    </section>
+
+    <section class="prose-section">
+      <h2>使用</h2>
+      <p>页面右下角出现浮动导航条 <code>[↑] 3 / 12 [↓]</code>：</p>
+      <table class="compare-table">
+        <thead>
+          <tr><th>操作</th><th>效果</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>点击 ↑</td><td>跳转到上一段代码块</td></tr>
+          <tr><td>点击 ↓</td><td>跳转到下一段代码块</td></tr>
+          <tr><td>拖动空白处</td><td>移动导航条位置</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="prose-section">
+      <h2>开发与打包</h2>
+      <pre class="code-block"><code># 生成扩展图标（需要 pillow）
+python scripts/generate-icons.py
+
+# Linux 打包到 dist/
+./scripts/pack.sh</code></pre>
+      <p class="install-note">Windows 下的 PowerShell 打包命令见仓库 README。扩展无构建步骤，<code>src/</code> 目录本身就是可加载的扩展。</p>
+    </section>
+
+    <section class="prose-section">
+      <h2>已知限制</h2>
+      <ul class="output-structure">
+        <li><strong>页面结构依赖</strong>：DeepSeek 页面改版可能导致复制按钮识别失败，此时会自动退化为 <code>pre</code> 兜底。</li>
+        <li><strong>流式生成回弹</strong>：流式生成期间点击跳转，页面若强制钉底，可能出现一次视觉回弹。</li>
+        <li><strong>仅匹配一个站点</strong>：扩展只对 <code>chat.deepseek.com</code> 生效，不覆盖其他 Web AI 页面。</li>
+      </ul>
+    </section>
+
+    <section class="prose-section">
+      <h2>隐私与边界</h2>
+      <p>扩展不收集、不存储、不传输任何用户数据：不读取或上传对话与代码内容，不记录浏览历史，不使用 Cookie，不使用分析或埋点服务，不请求网络权限，不向第三方服务器发送数据。它只声明一项权限范围：<code>https://chat.deepseek.com/*</code>（content script 匹配范围），用于在该页面识别代码块并注入导航按钮。</p>
+      <p>本扩展为非官方项目，与 DeepSeek 官方无关。它不修改 DeepSeek 服务端，不绕过访问限制，也不替代 DeepSeek 自身的任何功能。详见 <a href="https://github.com/WebAIHarnessRoom/deepseek-code-nav/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a>。</p>
+    </section>
+
+    <footer class="detail-footer">
+      <a href="https://github.com/WebAIHarnessRoom/deepseek-code-nav" target="_blank" rel="noopener">GitHub 仓库 ↗</a>
+      <a href="https://github.com/WebAIHarnessRoom/deepseek-code-nav/blob/main/PRIVACY.md" target="_blank" rel="noopener">隐私政策 ↗</a>
+      <a href="https://github.com/WebAIHarnessRoom/deepseek-code-nav/issues" target="_blank" rel="noopener">Issues ↗</a>
+    </footer>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>WebAIHarnessRoom · Harness 自治，Room 归集</p></div>
+  </footer>
+
+  <script src="../../assets/data.js"></script>
+  <script src="../../assets/app.js"></script>
+</body>
+</html>

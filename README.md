@@ -44,5 +44,6 @@ WebAIHarnessRoom 的门厅门户。纯静态站点，零依赖、零构建。
 
 - `assets/img/wahr.png` — 组织图标，用于所有页面 header 品牌区，以及非详情页的 favicon。
 - `assets/img/gpc.png` — GenerateProjectContext 图标，用于首页/索引卡片、详情页标题行，以及详情页 favicon。
+- `assets/img/deepseek-code-nav.png` — DeepSeek 代码块导航图标，用于首页/索引卡片、详情页标题行与 favicon。
 
 新增 Harness 时，把该 Harness 的图标放入 `assets/img/`，并在 `data.js` 条目的 `icon` 字段中填写相对站点根目录的路径（如 `assets/img/<name>.png`）。详情页的标题行图标是静态写在 HTML 里的，同样指向 `../../assets/img/<name>.png`。
